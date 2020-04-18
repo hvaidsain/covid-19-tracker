@@ -4,6 +4,7 @@ import CountUp from 'react-countup';
 import moment from 'moment'
 import styles from './cards.module.css'
 import cx from "classnames"
+import Spinner from "../ProgressLoader/spinner"
 
 
 
@@ -12,7 +13,7 @@ const Cards = (props) => {
     const { confirmed, recovered, deaths, lastupdate } = props.data
 
     if (!confirmed) {
-        return "LOADING...."
+        return null
     }
     console.log(props.data)
     return (

@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.pieContainer{
+    width: 70%;
+    height: 50%;
+}
+
+@media (max-width:768px){
+    .container{
+        width: 100%;
+    }
+}

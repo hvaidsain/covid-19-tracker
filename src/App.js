@@ -1,11 +1,15 @@
 import React , {Component} from 'react'
-import {Cards,CountryPicker,Chart} from "./components/index"
+import {Cards,CountryPicker,Chart,Piechart,Footer} from "./components/index"
 import styles from './App.module.css'
 import {fetchData} from "./api/index"
+import image1 from "./images/covid1.png"
+import Spinner from "./components/ProgressLoader/spinner"
+
 class App extends Component {
 
     state = {
-        data : {}
+        data : null,
+        country:""
     }
 
     async componentDidMount(){
@@ -15,18 +19,32 @@ class App extends Component {
         })
         // console.log(respose)
     }
+
+    handleCountryChange = async(country)=>{
+        console.log(country);
+        const respose = await fetchData(country)
+        this.setState({
+            data:respose,
+            country:country
+        })
+    }
     
     render(){
         console.log(this.state.data)
-        const {data} = this.state
+        const {data,country} = this.state
         return (
-            <div className={styles.container}>
-                
+            this.state.data ? (
+                <div className={styles.container}>
+                    {/* <Piechart data={data}/> */}
+                    <img src={image1} alt="COVID-19" className={styles.image} ></img>
                     <Cards data={data}/>
-                    <CountryPicker/>
-                    <Chart/>
-                
+                    <CountryPicker handleCountryChange={this.handleCountryChange} />
+                    <Chart data={data} country={country}/>
+                    <Footer/>
             </div>
+            ):(<Spinner/>)
+            
+            
         )
     }
 }
