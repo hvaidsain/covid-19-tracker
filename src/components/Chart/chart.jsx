@@ -99,7 +99,7 @@ const Charts = (props)=>{
                 }]
             }}
             options={{
-                legend:{display:false},
+                legend:{display:true},
                 maintainAspectRatio: true,
                 title:{display:true,text:props.country || "Global"}
     

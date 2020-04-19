@@ -4,6 +4,7 @@ import styles from './App.module.css'
 import {fetchData} from "./api/index"
 import image1 from "./images/covid1.png"
 import Spinner from "./components/ProgressLoader/spinner"
+import CoronaAnimation from './components/lotties/animation'
 
 class App extends Component {
 
@@ -35,8 +36,10 @@ class App extends Component {
         return (
             this.state.data ? (
                 <div className={styles.container}>
+                    <CoronaAnimation/>
                     {/* <Piechart data={data}/> */}
-                    <img src={image1} alt="COVID-19" className={styles.image} ></img>
+                    {/* <img src={image1} alt="COVID-19" className={styles.image} ></img> */}
+                    {/* <p>{`${country}` || `Global`} Stats</p> */}
                     <Cards data={data}/>
                     <CountryPicker handleCountryChange={this.handleCountryChange} />
                     <Chart data={data} country={country}/>

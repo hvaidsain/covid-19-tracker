@@ -24,7 +24,7 @@ const Country = (props)=>{
     return(
         <FormControl className={styles.formControl}>
             <NativeSelect onChange={(e)=>props.handleCountryChange(e.target.value)} >
-                <option value='' >global</option>
+                <option value=''>Global</option>
                 {countries.map((country,i)=> <option key={i} value={country.name} >{country.name}</option> )}
             </NativeSelect>
         </FormControl>
